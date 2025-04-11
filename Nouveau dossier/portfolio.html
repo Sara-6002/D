@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://th.bing.com/th/id/OIP.1xwf-x43OA-N2iUtvAB45AHaHa?rs=1&pid=ImgDetMain" type="image/x-icon">
+  <style>
+    
+    .footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 0;
+}
+
+.social-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #00ffc3;
+  color: #00ffc3;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 0 6px #00ffc3;
+  transition: all 0.3s ease;
+}
+
+.social-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ffc3, 0 0 20px #00ffc3;
+}
+
+    html {
+  scroll-behavior: smooth;
+}
+
+    .about-section {
+  width: 100%;
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-margin-top: 100px;
+}
+
+.about-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  color: var(--subtext);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+    .portfolio-section {
+  width: 100%;
+  padding: 6rem 2rem;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-margin-top: 100px;
+}
+
+.portfolio-content {
+  max-width: 1100px;
+  text-align: center;
+}
+
+.portfolio-content h2 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-intro {
+  color: var(--subtext);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.portfolio-card {
+  background-color: #202037;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(78, 243, 195, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(78, 243, 195, 0.3);
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-card h3 {
+  color: var(--text);
+  font-size: 1.3rem;
+  margin: 1rem;
+}
+
+.portfolio-card p {
+  color: var(--subtext);
+  margin: 0 1rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+    :root {
+      --bg-color: #0d0d1f;
+      --accent: #4ef3c3;
+      --accent-dark: #2be4af;
+      --text: #ffffff;
+      --subtext: #a9a9b3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+  background-color: var(--bg-color);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
+
+    header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #2a2a3f;
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      position: relative;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 0.3rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0%;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+      margin-top: 4px;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .btn-outline {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      color: var(--accent);
+      background: transparent;
+      transition: 0.4s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(78, 243, 195, 0.1);
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+      margin-top: -20px;
+      width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+
+    }
+
+    .hero.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-text {
+      max-width: 600px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--subtext);
+      margin-bottom: 2rem;
+    }
+
+    #typing-text {
+      min-height: 60px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--subtext);
+      transition: color 0.4s ease;
+    }
+
+    .btns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btns button {
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      border: none;
+    }
+
+    .btns button:first-child {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #000;
+      box-shadow: 0 0 15px rgba(78, 243, 195, 0.4);
+    }
+
+    .btns button:first-child:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(78, 243, 195, 0.6);
+    }
+
+    .btns button:last-child {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      backdrop-filter: blur(8px);
+    }
+
+    .btns button:last-child:hover {
+      background: rgba(78, 243, 195, 0.1);
+      box-shadow: 0 0 10px rgba(78, 243, 195, 0.3);
+    }
+
+    .hero-img img {
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(78, 243, 195, 0.3);
+      transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+    }
+
+    .hero-img img:hover {
+      transform: scale(1.07) rotate(1deg);
+      box-shadow: 0 0 45px rgba(78, 243, 195, 0.6);
+    }
+
+    .hire-me-section {
+      width: 100%;
+      padding: 6rem 2rem;
+      background: linear-gradient(to top, #111128, #0d0d1f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      scroll-margin-top: 100px;
+    }
+
+    .hire-content {
+      max-width: 600px;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hire-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .hire-content p {
+      font-size: 1.1rem;
+      color: var(--subtext);
+      margin-bottom: 2rem;
+    }
+
+    .hire-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .hire-btn:hover {
+      background: var(--accent-dark);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: var(--subtext);
+    }
+
+    .background-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+    @media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-img img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+  </style>
+</head>
+<body>
+  
+  <div class="background-particles">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 25%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 75%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 5s;"></div>
+  </div>
+
+  <header>
+
+    <h2>MyPortfolio</h2>
+    <nav>
+      <a href="#about">About</a>
+<a href="#hire">Contact</a>
+<a href="#portfolio">Projects</a>
+<a  class="btn-outline">Get Started</a>
+      
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <p>Hello, I am</p>
+      <h1>Leo Carter</h1>
+      <p id="typing-text"></p>
+      <div class="btns">
+        <button id="hireMeBtn">Hire Me</button>
+        <button>Portfolio</button>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://i.pinimg.com/736x/a7/76/5c/a7765cb28653a328a7d693e331335144.jpg" alt="Profile Image" />
+    </div>
+  </section>
+  <section id="about" class="about-section">
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>I'm Leo Carter, a front-end developer who’s all about clean, modern interfaces with a splash of personality. I specialize in turning ideas into interactive, user-friendly web experiences.</p>
+      <p>Whether it's a sleek landing page or a dynamic portfolio, I blend design and development to bring ideas to life.</p>
+    </div>
+  </section>
+  <span id="typing-text"></span>
+
+  <section id="hire" class="hire-me-section">
+    <div class="hire-content">
+      <h2>Let's Work Together</h2>
+      <p>I’m currently open to freelance or full-time front-end projects. Whether it’s a landing page, a full site, or a creative UI idea — let’s bring it to life.</p>
+      <a href="mailto:leo@example.com" class="hire-btn">Contact Me</a>
+    </div>
+  </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="portfolio-content">
+          <h2>My Work</h2>
+          <p class="portfolio-intro">Here are a few of my favorite projects showcasing clean design, responsiveness, and interaction.</p>
+          <div class="portfolio-grid">
+            <div class="portfolio-card">
+              <img src="https://i.postimg.cc/Zn8y3n1B/screenshot-of-the-login-page.jpg" alt="Project 1" />
+              <h3>Modern Landing Page</h3>
+              <p>Minimal UI with a smooth scroll and animated sections.</p>
+            </div>
+            <div class="portfolio-card">
+              <img src="https://i.postimg.cc/VL4Jcx18/portfolio.png" alt="Project 2" />
+              <h3>Portfolio Web Portal</h3>
+              <p>Interactive multi-screen form with animated transitions.</p>
+            </div>
+            <div class="portfolio-card">
+              <img src="https://i.postimg.cc/LsGqbjSg/Capture-d-cran-7-4-2025-194550.jpg" alt="Project 3" />
+              <h3>Nature Retreat Site</h3>
+              <p>Soothing, nature-themed booking site with gallery preview.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <a href="https://facebook.com" class="social-button" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://linkedin.com" class="social-button" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com" class="social-button" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </footer>
+      
+  <center><footer style="text-align: center;">
+    © 2025 Leo Carter. All rights reserved.
+  </footer>
+  </center>
+
+  <script>
+    const text = "A passionate front-end developer crafting modern & minimal web designs.";
+    const typingElement = document.getElementById("typing-text");
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        const delay = text.charAt(i - 1) === ' ' ? 60 : 35 + Math.random() * 40;
+        setTimeout(typeWriter, delay);
+      }
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(typeWriter, 400);
+    });
+
+    const hero = document.querySelector(".hero");
+    const showHero = () => {
+      const top = hero.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        hero.classList.add("visible");
+      }
+    };
+    window.addEventListener("scroll", showHero);
+    window.addEventListener("load", showHero);
+
+    // Scroll to Hire Me section
+    document.getElementById("hireMeBtn").addEventListener("click", () => {
+      document.getElementById("hire").scrollIntoView({ behavior: "smooth" });
+    });
+    // Scroll to Portfolio section
+document.querySelector(".btns button:last-child").addEventListener("click", () => {
+  document.getElementById("portfolio").scrollIntoView({ behavior: "smooth" });
+});
+ 
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  }
+});
+
+  </script>
+  <script>
+    const roles = ["Front-End Developer", "UI/UX Designer", "Web Animator"];
+    let index = 0;
+    let charIndex = 0;
+    const typingElement = document.getElementById("typing-text");
+    
+    function typeRole() {
+      if (charIndex < roles[index].length) {
+        typingElement.textContent += roles[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeRole, 100);
+      } else {
+        setTimeout(eraseRole, 1500);
+      }
+    }
+    
+    function eraseRole() {
+      if (charIndex > 0) {
+        typingElement.textContent = roles[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseRole, 50);
+      } else {
+        index = (index + 1) % roles.length;
+        setTimeout(typeRole, 300);
+      }
+    }
+    
+    document.addEventListener("DOMContentLoaded", typeRole);
+    </script>
+    
+</body>
+</html>
